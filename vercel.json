@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "wsgi.py"
+    }
+  ],
+  "env": {
+    "SECRET_KEY": "@flaskr_secret_key",
+    "DATABASE_URL": "@database_url",
+    "UPLOAD_FOLDER_URL": "@upload_folder_url"
+  }
+}
